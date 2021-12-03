@@ -40,6 +40,7 @@ public class SonarSweep {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    countIncreases(values);
     countIncreases(slidingWindow(values));
   }
 }
