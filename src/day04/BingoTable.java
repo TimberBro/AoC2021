@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class BingoTable {
 
+  // Initial value, means, that board still not win.
+  private int finalScore = -1;
   Map<Integer, List<Integer>> gameTable = new HashMap<>();
   Map<Integer, List<Boolean>> resultTable = new HashMap<>();
 
@@ -64,8 +66,8 @@ public class BingoTable {
   private boolean validateColumns() {
     int columnSize = gameTable.keySet().size();
     int rowSize = gameTable.get(0).size();
-    List<Boolean> currentColumn = new ArrayList<>();
     for (int i = 0; i < rowSize; i++) {
+      List<Boolean> currentColumn = new ArrayList<>();
       for (int j = 0; j < columnSize; j++) {
         currentColumn.add(resultTable.get(j).get(i));
       }
@@ -89,5 +91,13 @@ public class BingoTable {
       }
     }
     return result;
+  }
+
+  public int getFinalScore() {
+    return finalScore;
+  }
+
+  public void setFinalScore(int score) {
+    finalScore = score;
   }
 }

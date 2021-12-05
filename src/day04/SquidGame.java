@@ -4,13 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SquidGame {
 
+  private static void initializeResultTables(List<BingoTable> tableList) {
+    for (BingoTable table : tableList) {
+      table.initializeResultTable();
+    }
+  }
+
   public static void main(String[] args) throws IOException {
+    // Read game values
     List<Integer> numbers = new LinkedList<>();
     BufferedReader reader = new BufferedReader(new FileReader("src\\day04\\Day04.txt"));
     String temp;
@@ -20,6 +26,7 @@ public class SquidGame {
       numbers.add(Integer.parseInt(s));
     }
 
+    // Fill Bingo game tables
     while (reader.readLine() != null) {
       tableList.add(new BingoTable());
       BingoTable currentTable = tableList.get(tableList.size() - 1);
@@ -32,23 +39,17 @@ public class SquidGame {
 
     initializeResultTables(tableList);
 
-    int finalScore = 0;
+    List<BingoTable> winningTables = new ArrayList<>();
     for (Integer i : numbers) {
       for (BingoTable gameTable : tableList) {
         gameTable.searchValue(i);
-        if (gameTable.validateResultTable()) {
-          finalScore = gameTable.sumUnmarkedValues();
-          finalScore *= i;
-          System.out.println(finalScore);
-          return;
+        if (gameTable.validateResultTable() && gameTable.getFinalScore() == -1) {
+          gameTable.setFinalScore(gameTable.sumUnmarkedValues() * i);
+          winningTables.add(gameTable);
         }
       }
     }
-  }
-
-  private static void initializeResultTables(List<BingoTable> tableList) {
-    for (BingoTable table : tableList) {
-      table.initializeResultTable();
-    }
+    System.out.println(winningTables.get(0).getFinalScore());
+    System.out.println(winningTables.get(winningTables.size() - 1).getFinalScore());
   }
 }
