@@ -47,13 +47,14 @@ public class LanterfishSimulation {
 
     // Change value to get answer to first puzzle.
     for (int i = 0; i < 256; i++) {
+      // Mark how much fished should be added.
       BigInteger newFishes = fishCycleList.get(0);
       for (int j = 1; j < fishCycleList.size(); j++) {
         fishCycleList.set(j - 1, fishCycleList.get(j));
       }
-      BigInteger z = fishCycleList.get(6);
-      z = newFishes.add(z);
-      fishCycleList.set(6, z);
+      // Add old fishes back to 6th day of cycle.
+      fishCycleList.set(6, new BigInteger(String.valueOf(newFishes.add(fishCycleList.get(6)))));
+      // Add new fishes to 8th day of cycle.
       fishCycleList.set(8, newFishes);
     }
 
