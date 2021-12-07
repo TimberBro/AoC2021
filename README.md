@@ -2,12 +2,11 @@
 
 Welcome to the Advent of Code[^aoc] Kotlin project created by [timberbro][github] using the [Advent of Code Kotlin Template][template] delivered by JetBrains.
 
-In this repository, timberbro is about to provide solutions for the puzzles using [Kotlin][kotlin] language.
+In this repository, timberbro is about to provide solutions for the puzzles using [Java][java] language.
 
 If you're stuck with Kotlin-specific questions or anything related to this template, check out the following resources:
 
-- [Kotlin docs][docs]
-- [Kotlin Slack][slack]
+- [Java docs][docs]
 - Template [issue tracker][issues]
 
 
@@ -17,9 +16,8 @@ If you're stuck with Kotlin-specific questions or anything related to this templ
     You can solve the puzzle and provide an answer using the language of your choice.
 
 [aoc]: https://adventofcode.com
-[docs]: https://kotlinlang.org/docs/home.html
+[docs]: https://docs.oracle.com/javase/8/docs/api/
 [github]: https://github.com/timberbro
 [issues]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template/issues
-[kotlin]: https://kotlinlang.org
-[slack]: https://surveys.jetbrains.com/s3/kotlin-slack-sign-up
+[java]: https://www.java.com/
 [template]: https://github.com/kotlin-hands-on/advent-of-code-kotlin-template
