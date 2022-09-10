@@ -22,11 +22,16 @@ public class OctopusFlashModel {
     System.out.println("Before any steps:");
     System.out.println(Arrays.deepToString(octopusLevels).replace("], ", "]\n"));
 
-    for (int i = 0; i < 100; i++) {
+    int i = 0;
+    int previousStepFlashCounter = 0;
+    while ((model.flashCounter - previousStepFlashCounter) != 100) {
+      previousStepFlashCounter = model.flashCounter;
       model.simulateStep(octopusLevels);
-      System.out.println("After step " + i + " flashes = " + model.flashCounter);
-      System.out.println(Arrays.deepToString(octopusLevels).replace("], ", "]\n"));
+      //System.out.println(Arrays.deepToString(octopusLevels).replace("], ", "]\n"));
+      i++;
     }
+
+    System.out.println("All octopuses will flash on step: "  + i);
   }
 
   private void simulateStep(Octopus[][] octopusLevels) {
